@@ -1,64 +1,9 @@
 fileFormatVersion: 2
-guid: 9eb557ae4811d9a44b2574381c820222
+guid: 99aca6d2de2822e4593f51b76bd1b68c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ch06_body
-    second: {fileID: 2100000, guid: 10124f7b90bb3d941918517b5bfcd654, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ch06_body1
-    second: {fileID: 2100000, guid: 76323c8624cc09e4b89e6eb23840dfba, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ch06_eyelashes
-    second: {fileID: 2100000, guid: 9e8c116fb281f1b4e96d837f2e19af3f, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1001_Diffuse
-    second: {fileID: 2800000, guid: 36777e6d204640445a49f901cc79dba4, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1001_Glossiness
-    second: {fileID: 2800000, guid: a3351c5df2fbfa540936ceeccba89b06, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1001_Normal
-    second: {fileID: 2800000, guid: 1851b043d3bb40349add213740f44e33, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1001_Specular
-    second: {fileID: 2800000, guid: df1b9cd3d2dd20247a395c2a777c10dd, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1002_Diffuse
-    second: {fileID: 2800000, guid: 123ca8c6dc5638e4aa72cb9471c1faac, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1002_Glossiness
-    second: {fileID: 2800000, guid: baa1aa43597f7de4ea8af8d169c28872, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1002_Normal
-    second: {fileID: 2800000, guid: b7bde14f0dc461f49a25db8b1c465bc6, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch06_1002_Specular
-    second: {fileID: 2800000, guid: 826bd7316466a1c439607a9e127f6dea, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -84,7 +29,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: mixamo.com
+      internalID: -203655887218126122
+      firstFrame: 0
+      lastFrame: 298
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -552,18 +526,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Ch06_nonPBR(Clone)
+    - name: Ch06_nonPBR 1(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch06
-      parentName: Ch06_nonPBR(Clone)
+      parentName: Ch06_nonPBR 1(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig9:Hips
-      parentName: Ch06_nonPBR(Clone)
+      parentName: Ch06_nonPBR 1(Clone)
       position: {x: -0.000005739479, y: 0.96650684, z: -0.0060505345}
       rotation: {x: 0.0000020212644, y: -0.000009572726, z: 0.000056080495, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -899,11 +873,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c4b0c675a8e542d4dadc84201204c48a, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

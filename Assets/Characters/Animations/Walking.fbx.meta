@@ -31,7 +31,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: walking
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
@@ -526,18 +526,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Ch06_nonPBR(Clone)
+    - name: Ch06_nonPBR 1(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch06
-      parentName: Ch06_nonPBR(Clone)
+      parentName: Ch06_nonPBR 1(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig9:Hips
-      parentName: Ch06_nonPBR(Clone)
+      parentName: Ch06_nonPBR 1(Clone)
       position: {x: -0.000005739479, y: 0.96650684, z: -0.0060505345}
       rotation: {x: 0.0000020212644, y: -0.000009572726, z: 0.000056080495, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -873,7 +873,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 9eb557ae4811d9a44b2574381c820222, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c4b0c675a8e542d4dadc84201204c48a, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
