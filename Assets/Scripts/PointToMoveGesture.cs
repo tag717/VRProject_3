@@ -10,8 +10,8 @@ public class PointToMoveGesture : MonoBehaviour
     public AgentController agentController;
 
     public float maxDistance = 10f;
-    public float holdTimeRequired = 0.2f;
-
+    public float holdTimeRequired = 0.35f;
+    
     private float holdTimer;
  
     void Update()
@@ -37,14 +37,13 @@ public class PointToMoveGesture : MonoBehaviour
         if (pointer == null) return;
         */
 
-        var wrist = skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_WristRoot].Transform;
-        var tip = skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_IndexTip].Transform;
+        var wrist = skeleton.Bones[(int)OVRSkeleton.BoneId.XRHand_Wrist].Transform;
+        var tip = skeleton.Bones[(int)OVRSkeleton.BoneId.XRHand_IndexTip].Transform;
         Vector3 dir = (tip.position - wrist.position).normalized;
 
         if (Physics.Raycast(tip.position, dir, out RaycastHit hit, maxDistance, surfaceMask))
         {
             agentController.MoveTo(hit.point);
-            //agentController.Transform.position = hit.point;
             holdTimer = 0f;
         }
 
@@ -53,14 +52,14 @@ public class PointToMoveGesture : MonoBehaviour
     bool IndexExtended()
     {
 
-        var a = skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_Index1].Transform.position;
-        var b = skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_Index2].Transform.position;
-        var tip = skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_IndexTip].Transform.position;
+        var a = skeleton.Bones[(int)OVRSkeleton.BoneId.XRHand_IndexProximal].Transform.position;
+        var b = skeleton.Bones[(int)OVRSkeleton.BoneId.XRHand_IndexIntermediate].Transform.position;
+        var tip = skeleton.Bones[(int)OVRSkeleton.BoneId.XRHand_IndexTip].Transform.position;
 
-        //Debug.Log(Vector3.Dot((b - a).normalized, (tip - b).normalized) + " is less than " + 0.85f);
-        return Vector3.Dot((b - a).normalized, (tip - b).normalized) < -0.85f;
+        Debug.Log(Vector3.Dot((b - a).normalized, (tip - b).normalized) + " is less than " + 0.85f);
+        return Vector3.Dot((b - a).normalized, (tip - b).normalized) >0.70f; //-0.70
         
     }
 
-    bool Pinching() => hand.GetFingerIsPinching(OVRHand.HandFinger.Index);
+    //bool Pinching() => hand.GetFingerIsPinching(OVRHand.HandFinger.Index);
 }

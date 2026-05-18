@@ -46,14 +46,22 @@ public class RoomReader : MonoBehaviour
         foreach (var wall in room.WallAnchors)
         {
             wall.gameObject.layer = LayerMask.NameToLayer("Surface");
-
-            if (wall.gameObject.GetComponent<Collider>() == null)
-                wall.gameObject.AddComponent<BoxCollider>();
-                EnsureCollider(wall);
+            EnsureCollider(wall);
         }
+
+        foreach (var anchor in room.Anchors)
+        {
+            // 2. Check if this specific object's label is "TABLE"
+            if (anchor.Label == MRUKAnchor.SceneLabels.TABLE)
+            {
+                anchor.gameObject.layer = LayerMask.NameToLayer("Obstracles");
+                EnsureCollider(anchor);
+            }
+        }
+
         Debug.Log("Room loaded and surfaces mapped!");
 
-        //re-bake the NavMesh with the rendered floor colliders
+        // 3. Bake the pure, naked floor FIRST
         if (agentController != null)
         {
             agentController.RebakeNavMesh();
@@ -64,20 +72,20 @@ public class RoomReader : MonoBehaviour
     // Helper method to accurately size colliders based on the anchor data
     private void EnsureCollider(MRUKAnchor anchor)
     {
-        // Only add a collider if one doesn't exist
         if (anchor.gameObject.GetComponent<Collider>() == null)
         {
-            // Walls and floors use 2D planes in the Scene API
             if (anchor.HasPlane)
             {
                 BoxCollider bc = anchor.gameObject.AddComponent<BoxCollider>();
-                
-                // Scale the collider to match the physical plane's dimensions
-                // We make the Z-axis (thickness) 0.01f so it acts as a solid surface
                 bc.size = new Vector3(anchor.PlaneRect.Value.width, anchor.PlaneRect.Value.height, 0.01f);
-                
-                // Center the collider on the plane
                 bc.center = new Vector3(anchor.PlaneRect.Value.center.x, anchor.PlaneRect.Value.center.y, 0);
+            }
+            else if (anchor.HasVolume)
+            {
+                // We only need the BoxCollider now! The agent's Raycast will detect this.
+                BoxCollider bc = anchor.gameObject.AddComponent<BoxCollider>();
+                bc.size = anchor.VolumeBounds.Value.size;
+                bc.center = anchor.VolumeBounds.Value.center;
             }
         }
     }
