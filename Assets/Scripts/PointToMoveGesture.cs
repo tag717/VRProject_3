@@ -1,3 +1,4 @@
+//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,10 +13,10 @@ public class PointToMoveGesture : MonoBehaviour
     public float holdTimeRequired = 0.2f;
 
     private float holdTimer;
-
+ 
     void Update()
     {
-        if (!hand.IsTracked || hand.HandConfidence != OVRHand.TrackingConfidence.High)
+        if (!hand.IsTracked|| hand.HandConfidence != OVRHand.TrackingConfidence.High)
         {
             holdTimer = 0f;
             return;
@@ -27,6 +28,7 @@ public class PointToMoveGesture : MonoBehaviour
             return;
         }
 
+        Debug.Log("MOtion detected");
         holdTimer += Time.deltaTime;
         if (holdTimer < holdTimeRequired) return;
 
@@ -41,8 +43,8 @@ public class PointToMoveGesture : MonoBehaviour
 
         if (Physics.Raycast(tip.position, dir, out RaycastHit hit, maxDistance, surfaceMask))
         {
-            //agentController.MoveTo(hit.point);
-            agentController.position = hit.point;
+            agentController.MoveTo(hit.point);
+            //agentController.Transform.position = hit.point;
             holdTimer = 0f;
         }
 
@@ -52,10 +54,11 @@ public class PointToMoveGesture : MonoBehaviour
     {
 
         var a = skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_Index1].Transform.position;
-        var b = skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_Index3].Transform.position;
+        var b = skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_Index2].Transform.position;
         var tip = skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_IndexTip].Transform.position;
 
-        return Vector3.Dot((b - a).normalized, (tip - b).normalized) > 0.85f;
+        //Debug.Log(Vector3.Dot((b - a).normalized, (tip - b).normalized) + " is less than " + 0.85f);
+        return Vector3.Dot((b - a).normalized, (tip - b).normalized) < -0.85f;
         
     }
 

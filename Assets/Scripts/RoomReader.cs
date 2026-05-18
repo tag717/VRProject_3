@@ -3,6 +3,7 @@ using Meta.XR.MRUtilityKit;
 
 public class RoomReader : MonoBehaviour
 {
+    public AgentController agentController;
     public LayerMask surfaceLayer;
 
     private void Start() //used to be onEnable() but changed
@@ -35,7 +36,7 @@ public class RoomReader : MonoBehaviour
     {
         var room = MRUK.Instance.GetCurrentRoom();
         if (room == null) return;
-        
+
         var floor = room.FloorAnchor;
         if (floor != null)
         {
@@ -51,6 +52,13 @@ public class RoomReader : MonoBehaviour
                 EnsureCollider(wall);
         }
         Debug.Log("Room loaded and surfaces mapped!");
+
+        //re-bake the NavMesh with the rendered floor colliders
+        if (agentController != null)
+        {
+            agentController.RebakeNavMesh();
+            Debug.Log("NavMesh Bake Complete!");
+        }
     }
 
     // Helper method to accurately size colliders based on the anchor data
