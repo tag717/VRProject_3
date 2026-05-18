@@ -12,7 +12,7 @@ public class AgentController : MonoBehaviour
 
     public void RebakeNavMesh()
     {
-        surface.BuildNavMesh();
+        surface.BuildNavMesh(); //called in RoomReader once the actual colliders are done
     }
 
     public void MoveTo(Vector3 rawTarget)
